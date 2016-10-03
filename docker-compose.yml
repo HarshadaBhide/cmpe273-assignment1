@@ -1,0 +1,21 @@
+version: '2'
+services:
+  web:
+    build: .
+    command: python /code/app/home.py
+    ports:
+     - "5000:5000"
+    volumes:
+     - .:/code
+    links:
+     - db
+  
+  db:
+    image: mysql
+    volumes:
+      - ./database:/var/lib/mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE: assign1
+       MYSQL_USER: root
+       MYSQL_PASSWORD: root

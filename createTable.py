@@ -1,8 +1,7 @@
 from sqlalchemy import *
-from sqlalchemy import create_engine, ForeignKey
-from sqlalchemy import Column, Date, Integer, String
+from sqlalchemy import create_engine
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
 from sqlalchemy.orm import sessionmaker
  
 dbExists = false
@@ -13,7 +12,7 @@ try:
 except: 
     engine = create_engine('mysql://root:root@localhost:3306')
     engine.execute("CREATE DATABASE IF NOT EXISTS assign1")
-    
+
 engine.execute("USE assign1")
 Base = declarative_base()
  

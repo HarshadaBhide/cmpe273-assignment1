@@ -1,10 +1,11 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask import render_template, request, flash
-from flask import redirect, session, abort
-from sqlalchemy.orm import sessionmaker
-from createTable import *
+from flask import request
+from flask import session
 from flask import jsonify
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+from createTable import *
 
 app = Flask(__name__)
 app.debug = True
@@ -16,12 +17,10 @@ db.init_app(app)
 engine = create_engine('mysql://root:root@localhost:3306/assign1', echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
- 
-@app.route('/')
-@app.route('/home')
-def home():
-    expenses = session.query(Expense).all()
-    return render_template('homeView.html', expenses=expenses)
+
+@app.route("/")
+def hello():
+    return "Hello from New5 Flask App!!"
 	
 @app.route('/v1/expenses', methods=['POST'])
 def addExpense():
@@ -105,22 +104,6 @@ def viewExpense(expense_id):
         resp.status_code = 204
         resp.headers.set('status', '204 No Content')
         return resp
-
-@app.route('/addButton')
-def addButton():	
-	return render_template('addView.html')
-	
-@app.route('/viewButton')
-def viewButton():	
-	return render_template('viewView.html')
-
-@app.route('/modifyButton')
-def modifyButton():	
-	return render_template('modifyView.html')
-
-@app.route('/deleteButton')
-def deleteButton():	
-	return render_template('deleteView.html')
 	
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0')

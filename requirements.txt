@@ -1,1 +1,6 @@
 flask
+SQLAlchemy
+flask-sqlalchemy
+sqlalchemy
+mysqlclient
+simplejson
