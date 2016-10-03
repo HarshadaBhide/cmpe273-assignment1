@@ -1,0 +1,9 @@
+{% block body %}
+<center><h1 style="color:blue;">Expense Management System!</h1></center>
+<p>View details of expense - </p>
+<form action="/v1/expenses>" method="GET">
+  <br><br>
+  Id: <input type="text" name="expense_id"><br><br>
+  <input type="submit">
+</form>
+{% endblock %}

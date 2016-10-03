@@ -1,0 +1,30 @@
+{% block body %}
+<center><h1 style="color:blue;">Welcome to Expense Management System!</h1></center>
+<h3>List of expenses :</h3>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+	<th>Category</th>
+  </tr>
+{% for expense in expenses %}
+   <tr>
+        <td> {{ expense.id }} </td>
+        <td> {{ expense.name }} </th>
+		<td> {{ expense.category }} </th>
+   </tr>
+{% endfor %}
+</table>
+<br><br>
+<a href='/addButton'>Add new Expense...</a><br><br>
+<a href='/viewButton'>View Expense details...</a><br><br>
+<a href='/modifyButton'>Modify Expense...</a><br><br>
+<a href='/deleteButton'>Delete Expense...</a>
+{% endblock %}
