@@ -1,9 +1,16 @@
 FROM python:3.5.2
 MAINTAINER Harshada "harshada.bhide@gmail.com"
-RUN apt-get update -y
-RUN apt-get install -y python3-pip
 COPY . /app
 WORKDIR /app
-RUN pip3 install -r requirements.txt
+RUN pip install	configparser
+RUN pip install	pymysql
+RUN pip install	flask
+RUN pip install	flask-sqlalchemy
+RUN pip install	flask-wtf
+RUN pip install	sqlalchemy
+RUN pip install	Flask-Script
+RUN pip install	Flask-Migrate
+RUN pip install	simplejson
 ENTRYPOINT ["python"]
-CMD ["home.py"]
+CMD ["app.py"]
+EXPOSE 5000
